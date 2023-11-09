@@ -44,8 +44,26 @@ export const login = async (
     if (!comparePassword) {
       throw new Error("Invalid Credentials");
     } else {
-      res.send({ user: existingUser, token: generateToken(existingUser?.id) });
+      let token = generateToken(existingUser?.id);
+      res.cookie("token", token, {
+        httpOnly: true,
+        maxAge: 1000 * 60 * 60 * 24 * 30,
+      });
+      res.send({ user: existingUser, token });
     }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const logout = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  res.clearCookie("token");
+  res.send("logout succeess")
+  try {
   } catch (error) {
     console.log(error);
   }
