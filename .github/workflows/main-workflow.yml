@@ -6,17 +6,17 @@ on:
       - main
 
 jobs:
-  hello:
+  install-dependencies:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Hello World
-        run: echo "Hello World"
+      - name: install
+        run: npm ci
 
-  goodbye:
-    needs: hello
+  runs-tests:
+    needs: install-dependencies
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Goodbye World
-        run: echo "Goodbye"
+      - name: test
+        run: npm test
