@@ -21,7 +21,7 @@ const doc = [
     __v: 0,
   },
 ];
-describe.skip("TODOS", () => {
+describe("TODOS", () => {
   beforeEach(() => mockingoose.resetAll());
 
   it("gets all todos", async () => {

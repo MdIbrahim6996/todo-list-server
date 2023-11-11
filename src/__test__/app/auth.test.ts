@@ -21,9 +21,6 @@ describe("AUTHENTICATION", () => {
       .post(`/api/auth/register`)
       .send(registerPayload);
 
-    const res2 = await request(app)
-      .post(`/api/auth/register`)
-      .send(registerPayload);
     expect(res.statusCode).toBe(200);
   }, 10000);
 
@@ -36,9 +33,6 @@ describe("AUTHENTICATION", () => {
       .post(`/api/auth/register`)
       .send(registerPayload);
 
-    const res2 = await request(app)
-      .post(`/api/auth/register`)
-      .send(registerPayload);
     expect(res.statusCode).toBe(200);
     expect(res.body.message).toBe("User ALready Exist");
   }, 10000);

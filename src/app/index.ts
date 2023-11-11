@@ -5,6 +5,8 @@ import express, { Application, NextFunction, Request, Response } from "express";
 import mongoose from "mongoose";
 import morgan from "morgan";
 import config from "config";
+import helmet from "helmet";
+import cors from "cors";
 
 import TodoRouter from "./routes/todo.routes";
 import AuthRouter from "./routes/auth.routes";
@@ -15,6 +17,8 @@ mongoose
   .catch((err) => console.log(err));
 
 export const app: Application = express();
+app.use(cors());
+app.use(helmet());
 app.use(express.json());
 app.use(morgan("dev"));
 
