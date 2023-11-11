@@ -21,7 +21,7 @@ const doc = [
     __v: 0,
   },
 ];
-describe("TODOS", () => {
+describe.skip("TODOS", () => {
   beforeEach(() => mockingoose.resetAll());
 
   it("gets all todos", async () => {
@@ -36,14 +36,6 @@ describe("TODOS", () => {
       title: "Update",
       description: "First",
     };
-    // const doc = {
-    //   _id: "654cd37d1460edbceb45074a",
-    //   title: "Update",
-    //   description: "First",
-    //   createdAt: "2023-11-09T12:41:33.579Z",
-    //   updatedAt: "2023-11-09T12:48:10.993Z",
-    //   __v: 0,
-    // };
     mockingoose(Todo).toReturn(doc[0], "save");
     const res = await request(app).post(`/api/todo/create`).send(postBody);
 

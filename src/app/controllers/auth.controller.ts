@@ -22,6 +22,7 @@ export const register = async (
     res.send(newUser);
   } catch (error) {
     console.log(error);
+    next(error);
   }
 };
 
@@ -53,6 +54,7 @@ export const login = async (
     }
   } catch (error) {
     console.log(error);
+    next(error)
   }
 };
 
@@ -62,7 +64,7 @@ export const logout = async (
   next: NextFunction
 ) => {
   res.clearCookie("token");
-  res.send("logout succeess")
+  res.send("logout succeess");
   try {
   } catch (error) {
     console.log(error);
